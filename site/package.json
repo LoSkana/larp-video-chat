@@ -1,0 +1,21 @@
+{
+  "name": "skanaVideoChat",
+  "preferGlobal": false,
+  "version": "0.9.1",
+  "author": {
+    "name": "Mauro Scanagatta",
+    "email": "scanagatta.mauro@gmail.com"
+  },
+  "description": "Video Chat for LARPs",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LoSkana/LarpVideoChat.git"
+  },
+  "dependencies": {
+    "fbr": "latest",
+    "rtcmulticonnection": "latest",
+    "socket.io": "latest",
+    "webrtc-adapter": "latest"
+  },
+  "license": "MIT"
+}

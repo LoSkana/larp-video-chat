@@ -1,0 +1,23 @@
+### SERVER 
+
+npm install 
+
+
+### STUN / TURN SERVER
+
+# https://www.webrtc-experiment.com/docs/TURN-server-installation-guide.html#reTurnServer
+
+sudo apt install resiprocate-turn-server
+
+nano /etc/reTurn/users.txt
+
+# metti: username:01f747a4ce917e70aa813460a80757e4:reTurn:authorized
+# nota che l'hash deriva da: echo -n username:reTurn:password | md5sum
+
+service resiprocate-turn-server restart
+
+# controlliamo ora che funzioni tutto
+
+netstat -nlp | grep reTurnServer
+
+
