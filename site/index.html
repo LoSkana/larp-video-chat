@@ -10,24 +10,32 @@
 </head>
 <body>
 
-  <h1>
+  <h1 id="title">
     Larp Video Chat
   </h1>
 
-  <section class="make-center" id="sec-ready">
-    <input type="text" id="room-id" value="abcdef" autocorrect=off autocapitalize=off size=5>
+  <div class="make-center" id="sec-ready">
+    Trasmit: 
+        <select id="room-trasmit">
+            <option value="all" selected="selected">Audio e video</option>
+            <option value="audio">Only audio</option>
+            <option value="video">Only video</option>
+            <option value="nothing">Nothing</option>
+        </select>
+      
+    Room: <input type="text" id="room-id" value="" autocorrect=off autocapitalize=off size=5>
 
     <button id="enter-room">Enter Room</button>
     
-  </section>
+  </div>
   
-  <section class="make-center" id="sec-connected" style="display:none;">
+  <div class="make-center" id="sec-connected" style="display:none;">
     
     <p id="room-descr"></p>
     <p id="room-partecip"></p>
 
     <button id="share-file">Share File</button> <button id="btn-leave-room">Leave Room</button>
-  </section>
+  </div>
   
   <hr />
 
@@ -51,6 +59,8 @@
 <script src="/node_modules/rtcmulticonnection/dev/getHTMLMediaElement.js"></script>
 
 <script src="/node_modules/fbr/FileBufferReader.js"></script>
+
+<script src="/node_modules/jquery/dist/jquery.min.js"></script>
 
 <script src="/main.js"></script>
 
