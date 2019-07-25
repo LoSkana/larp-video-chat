@@ -13,7 +13,7 @@ Based on the WebRTC standard (https://webrtc.org/) and the RTCMultiConnection im
 
 # It is true? 
 
-Just try it yourself: you just need two pcs, two webcams, one router and 15 minutes to spare. 
+Just try it yourself: you just need two pcs, two webcams, one router and 15 minutes to spare: follow the instructions on INSTALL.
 
 # You said something about customization? 
 
