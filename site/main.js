@@ -38,18 +38,6 @@ document.getElementById('btn-leave-room').onclick = function() {
      location.reload(); 
 };
 
-// ......................................................
-// ................FileSharing/TextChat Code.............
-// ......................................................
-
-document.getElementById('share-file').onclick = function() {
-    var fileSelector = new FileSelector();
-    fileSelector.selectSingleFile(function(file) {
-        connection.send(file);
-        alert(file);
-    });
-};
-
 
 // ......................................................
 // ..................RTCMultiConnection Code.............
@@ -171,6 +159,54 @@ connection.onUserIdAlreadyTaken = function(useridAlreadyTaken, yourNewUserId) {
 function disableInputButtons() {
     document.getElementById('enter-room').disabled = true;
     document.getElementById('room-id').disabled = true;
+}
+
+// ......................................................
+// ................FileSharing/TextChat Code.............
+// ......................................................
+
+document.getElementById('share-file').onclick = function() {
+    var fileSelector = new FileSelector();
+    fileSelector.selectSingleFile(function(file) {
+        connection.send(file);
+    });
+};
+
+connection.onFileStart = function (file) {
+    var div = document.createElement('div');
+    div.title = file.name;
+    div.innerHTML = '<label>0%</label> <progress></progress>';
+    document.getElementById('file-container').style.display = 'block';
+    document.getElementById('file-list').appendChild(div);
+    progressHelper[file.uuid] = {
+        div: div,
+        progress: div.querySelector('progress'),
+        label: div.querySelector('label')
+    };
+    progressHelper[file.uuid].progress.max = file.maxChunks;
+    
+    
+};
+
+var progressHelper = {};
+
+// to make sure file-saver dialog is not invoked.
+connection.autoSaveToDisk = false;
+
+connection.onFileProgress = function (chunk, uuid) {
+    var helper = progressHelper[chunk.uuid];
+    helper.progress.value = chunk.currentPosition || chunk.maxChunks || helper.progress.max;
+    updateLabel(helper.progress, helper.label);
+};
+
+connection.onFileEnd = function (file) {
+    progressHelper[file.uuid].div.innerHTML = '<a href="' + file.url + '" target="_blank" download="' + file.name + '">' + file.name + '</a>';
+};
+
+function updateLabel(progress, label) {
+    if (progress.position == -1) return;
+    var position = +progress.position.toFixed(2).split('.')[1] || 100;
+    label.innerHTML = position + '%';
 }
 
 // ......................................................

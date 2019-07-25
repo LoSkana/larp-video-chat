@@ -1,7 +1,4 @@
-### SERVER 
-
-npm install 
-
+It's really easy to install & deploy. You just have to prepare a simple STUN / TURN server (just follow the instructions), and finally deploy the actual server
 
 ### STUN / TURN SERVER
 
@@ -9,15 +6,28 @@ npm install
 
 sudo apt install resiprocate-turn-server
 
-nano /etc/reTurn/users.txt
+sudo nano /etc/reTurn/users.txt
 
-# metti: username:01f747a4ce917e70aa813460a80757e4:reTurn:authorized
-# nota che l'hash deriva da: echo -n username:reTurn:password | md5sum
+# add as last line: username:01f747a4ce917e70aa813460a80757e4:reTurn:authorized
+# notiche that the hash is the output of: echo -n username:reTurn:password | md5sum
 
 service resiprocate-turn-server restart
 
-# controlliamo ora che funzioni tutto
+# check it is running!
 
-netstat -nlp | grep reTurnServer
+sudo netstat -nlp | grep reTurnServer
+
+# WARNING: if you restart the server, you have to manually start the resiprocate-turn-server service
 
 
+### SERVER 
+
+sudo ufw allow 8432 (or whatever firewall you are using) 
+
+cd site
+
+npm install 
+
+node server.js
+
+go to localhost:8432 and have fun!

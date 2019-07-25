@@ -70,8 +70,9 @@ header {
     height: 50px;
 }
 
-section, header {
-    border-bottom: 1px solid #95d4e7;
+hr {
+    margin: 0.5em;
+    color: #38a8e0;
 }
 
 section, header, footer {
@@ -88,15 +89,15 @@ a {
 }
 
 a, h2 {
-    color: #EC008C;
+    color: #38a8e0;
 }
 
 a:hover {
-    color: #671345;
+    color: #8b8bf3;
 }
 
 .highlighted {
-    color: #EC008C;
+    color: #38a8e0;
 }
 
 .make-center {
