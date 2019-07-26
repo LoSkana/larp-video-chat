@@ -82,7 +82,7 @@ var ioServer = require('socket.io');
 
 var app = server.createServer(serverHandler);
 RTCMultiConnectionServer.beforeHttpListen(app, config);
-app = app.listen(process.env.PORT || 8432, process.env.IP || "0.0.0.0", function() {
+app = app.listen(config["port"], process.env.IP || "0.0.0.0", function() {
     RTCMultiConnectionServer.afterHttpListen(app, config);
 });
 

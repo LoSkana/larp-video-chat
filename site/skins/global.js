@@ -227,10 +227,14 @@ function param(name, def) {
     return v; 
 }
 
-$(function() {
+$(function() {   
+    
+    $('head').append( $('<link rel="stylesheet" type="text/css" />').attr('href', 'skins/' + config.skin + '/style.css') );
+    $('head').append( $('<script type="text/javascript" />').attr('src', 'skins/' + config.skin + '/local.js') );
+    
     $('#room-id').val(param('id', Math.floor(Math.random() * 10000)));
     
-    $('#room-trasmit').val(param('trasmit', 'def'));
+    $('#room-trasmit').val(param('trasmit', 'all'));
     
     if (param('go', 0) != 0)
         $('#enter-room').click();
