@@ -17,6 +17,6 @@ Just try it yourself: you just need two pcs, two webcams, one router and 15 minu
 
 # You said something about customization? 
 
-Take a look at index.html: it's a barebone web page. You can add images, text, style in any way you want, for example if you want to achieve a militaristic or a scifi look, based on the theme of your LARP!
-
-Just don't remove elements with an id, though ;) 
+Take a look at 'skins/fallout': it's a super simple costumization to achieve a "fallout terminal" look. 
+You can add new skins in the same way, for example if you want to achieve a militaristic or a scifi look, based on the theme of your LARP!
+Then just activate them by changing 'skins/config.js', and commit them to the repo so that we can all share them ;) 
