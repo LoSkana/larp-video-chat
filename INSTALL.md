@@ -25,8 +25,8 @@ https://www.webrtc-experiment.com/docs/TURN-server-installation-guide.html#reTur
 
 # SERVER 
 
-  sudo ufw allow 8432 (or whatever firewall you are using) 
-  cd site
-  npm install 
-  node server.js
-  go to localhost:8432 and have fun!
+	sudo ufw allow 8432 (or whatever firewall you are using) 
+	cd site
+	npm install 
+	node server.js
+	go to localhost:8432 and have fun!
