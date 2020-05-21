@@ -1,7 +1,7 @@
 // http://127.0.0.1:8432
 // http://localhost:8432
 
-var server = require('http'),
+var server = require('https'),
     url = require('url'),
     path = require('path'),
     fs = require('fs');
@@ -65,6 +65,8 @@ function serverHandler(request, response) {
     });
 }
 
+
+
 var config = {
   "socketURL": "/",
   "dirPath": "",
@@ -73,14 +75,19 @@ var config = {
   "socketCustomEvent": "larp-video-chat-custom",
   "port": 8432,
   "enableLogs": false,
-  "isUseHTTPs": false,
-  "enableAdmin": false
+  "isUseHTTPs": true,
+  "enableAdmin": false,
+};
+
+const options = {
+  key: fs.readFileSync('key.pem'),
+  cert: fs.readFileSync('cert.pem')
 };
 
 var RTCMultiConnectionServer = require('rtcmulticonnection-server');
 var ioServer = require('socket.io');
 
-var app = server.createServer(serverHandler);
+var app = server.createServer(options, serverHandler);
 RTCMultiConnectionServer.beforeHttpListen(app, config);
 app = app.listen(config["port"], process.env.IP || "0.0.0.0", function() {
     RTCMultiConnectionServer.afterHttpListen(app, config);
