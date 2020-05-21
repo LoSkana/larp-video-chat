@@ -19,12 +19,19 @@ sudo netstat -nlp | grep reTurnServer
 
 # WARNING: if you restart the server, you have to manually start the resiprocate-turn-server service
 
+### HTTPS 
+
+cd site
+
+openssl genrsa -out key.pem
+openssl req -new -key key.pem -out csr.pem
+openssl x509 -req -days 9999 -in csr.pem -signkey key.pem -out cert.pem
+rm csr.pem
+
 
 ### SERVER 
 
 sudo ufw allow 8432 (or whatever firewall you are using) 
-
-cd site
 
 npm install 
 
